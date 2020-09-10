@@ -1,0 +1,34 @@
+﻿@model WaveSurferMusicApp.Models.SubscriptionViewModel;
+@{
+    ViewData["Title"] = "Subscription";
+}
+
+<h2>Subscription</h2>
+
+<form asp-controller="Account" asp-action="Subscription" method="post">
+    <div asp-validation-summary="All"></div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+    </div>
+
+    <div>
+        <label asp-for="FistName"></label>
+        <input asp-for="FistName" />
+    </div>
+
+    <div>
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" />
+    </div>
+
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+    </div>
+
+
+
+    <button type="submit">Inscription</button>
+</form>

@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container d-flex p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        
+        <nav class="nav justify-content-center float-right">
+
+            <div class="nav-link">
+
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="darkSwitch">
+                    <label class="custom-control-label" for="darkSwitch">Dark/light Mode</label>
+                </div>
+
+                <script src="~/js/dark-mode-switch.min.js"></script>
+
+            </div>
+        </nav>
+    </header>
+</div>
+<div>
+    <h1>Player</h1>
+    <div id="waveform"></div>
+    <button style="background-color: #008CBA; border: none; color: white;border-radius: 8px;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)" onclick="wavesurfer.skipBackward()">
+        Backward
+    </button>
+    <button style="background-color: #008CBA; border: none; color: white;border-radius: 8px;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)" onclick="wavesurfer.playPause()">
+        Play | Pause
+    </button>
+
+    <button style="background-color: #008CBA; border: none; color: white;border-radius: 8px;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)" onclick="wavesurfer.skipForward()">
+        Forward
+    </button>
+
+    <button style="background-color: #008CBA; border: none; color: white;border-radius: 8px;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)" onclick="wavesurfer.toggleMute()">
+        Toggle Mute
+    </button>
+</div>
+<br />
+<br />
+
+<input style="background-color: #008CBA; border: none; color: white;border-radius: 8px;box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)" type="file" id="fileinput" />
+
+<script>
+    // Initialize WaveSurfer
+    var wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: 'blue',
+        progressColor: 'red'
+    });
+
+    
+    document.getElementById("fileinput").addEventListener('change', function (e) {
+        var file = this.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function (evt) {
+                
+                var blob = new window.Blob([new Uint8Array(evt.target.result)]);
+
+                
+                wavesurfer.loadBlob(blob);
+            };
+
+            reader.onerror = function (evt) {
+                console.error("An error ocurred reading the file: ", evt);
+            };
+
+            
+            reader.readAsArrayBuffer(file);
+        }
+    }, false);
+</script>
+
+
