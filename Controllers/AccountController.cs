@@ -83,7 +83,7 @@ namespace WaveSurferMusicApp.Controllers
             {
                 Email = subscriptionVM.Email,
                 UserName = subscriptionVM.Email,
-                FirstName = subscriptionVM.FistName,
+                FirstName = subscriptionVM.FirstName,
                 LastName = subscriptionVM.LastName
             };
 

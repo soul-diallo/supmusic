@@ -14,7 +14,7 @@ namespace WaveSurferMusicApp.Models
         public string Email { get; set; }
 
         [Display(Name = "Nom de famille")]
-        public string FistName { get; set; }
+        public string FirstName { get; set; }
 
         [Display(Name = "Prénom")]
         public string LastName { get; set; }
